@@ -1,5 +1,5 @@
 
-#include "spectreVariant1.c"
+#include "spectreVariant1.h"
 
 int main()
 {
