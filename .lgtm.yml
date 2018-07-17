@@ -3,7 +3,6 @@ extraction:
     after_prepare: 
        - export GNU_MAKE=make
        - export GIT=true 
-       - $GNU_MAKE clean
     index:    # Customizable step used by all languages.
       build_command:
         - $GNU_MAKE sv1.exe
