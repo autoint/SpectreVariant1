@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''make clean
-make sv1.exe'''
+        sh '''make clean'''
+        sh '''make sv1.exe'''
       }
     }
     stage('Test') {
