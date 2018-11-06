@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'ls -al'
+        sh '''make clean
+make sv1.exe'''
       }
     }
     stage('Test') {
