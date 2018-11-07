@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    LIN_WKR
+    label  'LIN_WKR'
   }
   stages {
     stage('Build') {
