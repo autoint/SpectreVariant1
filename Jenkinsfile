@@ -4,7 +4,9 @@ pipeline {
   }
   stages {
     stage('Infrastructure'){
-      sh '''sudo apt-get -y install gcc make build-essential'''
+      steps {
+        sh '''sudo apt-get -y install gcc make build-essential'''
+      }
     }
     stage('Build') {
       steps {
