@@ -1,5 +1,7 @@
 pipeline {
-  agent LIN_WKR
+  agent {
+    LIN_WKR
+  }
   stages {
     stage('Build') {
       steps {
