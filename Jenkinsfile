@@ -1,8 +1,11 @@
 pipeline {
   agent {
-    label  'LIN_WKR'
+    label  'linux'
   }
   stages {
+    stage('Infrastructure'){
+      sh '''sudo apt-get -y install gcc make build-essential'''
+    }
     stage('Build') {
       steps {
         sh '''make sv1.exe'''
