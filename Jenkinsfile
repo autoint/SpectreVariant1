@@ -6,7 +6,7 @@ pipeline {
     stage('dependencies'){
       steps {
         sh '''wget https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/setupVcLinux.sh'''
-        sh '''ls -al'''
+        sh '''sudo chmod a+rwx setupVcLinux.sh'''
         sh '''sudo ./setupVcLinux.sh'''
       }
     }
