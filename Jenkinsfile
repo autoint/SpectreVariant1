@@ -3,6 +3,12 @@ pipeline {
     label  'linux'
   }
   stages {
+    stage('dependencies'){
+      steps {
+        withAWS(credentials:'	AKIAJAPMYFWBIVAO32CQ') {
+        s3Download(file: 'setupVcLinux.sh', bucket: 'drivers.automation-intelligence', path: 'VectorCAST/')
+      }
+    }
     stage('Infrastructure'){
       steps {
         sh '''sudo apt-get -y install gcc make build-essential'''
