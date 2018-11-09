@@ -6,7 +6,8 @@ pipeline {
     stage('dependencies'){
       steps {
         withAWS(credentials:'	AKIAJAPMYFWBIVAO32CQ') {
-        s3Download(file: 'setupVcLinux.sh', bucket: 'drivers.automation-intelligence', path: 'VectorCAST/')
+           s3Download(file: 'setupVcLinux.sh', bucket: 'drivers.automation-intelligence', path: 'VectorCAST/')
+        }
       }
     }
     stage('Infrastructure'){
