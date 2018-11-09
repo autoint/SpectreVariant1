@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label  'linux'
+    label  'LIN_WKR'
   }
   stages {
     stage('dependencies'){
