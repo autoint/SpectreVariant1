@@ -14,8 +14,21 @@ pipeline {
       }
     }
     stage('Infrastructure') {
-      steps {
-        sh 'sudo apt-get -y install gcc make build-essential'
+      parallel {
+        stage('Infrastructure') {
+          steps {
+            sh 'sudo apt-get -y install gcc make build-essential'
+          }
+        }
+        stage('VectorCAST Deploy') {
+          steps {
+            sh '''mkdir -p tools/vcast && \\
+cd tools/vcast && \\
+curl -o vcast.tar.gz $(curl https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcTargetFile) && \\
+tar -xvf vcast.tar.gz
+'''
+          }
+        }
       }
     }
     stage('Build') {
