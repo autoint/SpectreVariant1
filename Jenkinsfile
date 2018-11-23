@@ -1,23 +1,26 @@
 pipeline {
   agent {
-    label  'LIN_WKR'
+    label 'LIN_WKR'
   }
   stages {
-    stage('dependencies'){
+    stage('dependencies') {
       steps {
-        sh '''wget https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/setupVcLinux.sh'''
-        sh '''sudo chmod a+rwx setupVcLinux.sh'''
-        sh '''sudo ./setupVcLinux.sh'''
+        sh 'git clone https://github.com/nirocr/msc'
+        dir(path: 'msc/deploy/tools') {
+          sh 'chmod a+rw setupVectorCASTLinux.sh'
+          sh 'sudo ./setupVectorCASTLinux.sh'
+        }
+
       }
     }
-    stage('Infrastructure'){
+    stage('Infrastructure') {
       steps {
-        sh '''sudo apt-get -y install gcc make build-essential'''
+        sh 'sudo apt-get -y install gcc make build-essential'
       }
     }
     stage('Build') {
       steps {
-        sh '''make sv1.exe'''
+        sh 'make sv1.exe'
       }
     }
     stage('Test') {
