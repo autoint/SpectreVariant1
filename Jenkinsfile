@@ -28,7 +28,7 @@ pipeline {
 cd tools/vcast && \\
 URL=$(curl https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcTargetFile) && \\
 URL=${URL%$\'\\r\'} && \\
-curl -o vcast.tar.gz $URL && \\
+curl -o vcast.tar.gz https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcast.linux.2018sp3.tar.gz && \\
 tar -xvf vcast.tar.gz
 '''
           }
