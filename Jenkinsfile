@@ -26,7 +26,9 @@ pipeline {
           steps {
             sh '''mkdir -p tools/vcast && \\
 cd tools/vcast && \\
-curl -o vcast.tar.gz $(curl https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcTargetFile) && \\
+URL=$(curl https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcTargetFile) && \\
+URL=${URL%$\'\\r\'} && \\
+curl -o vcast.tar.gz $URL && \\
 tar -xvf vcast.tar.gz
 '''
           }
