@@ -24,13 +24,9 @@ pipeline {
         }
         stage('VectorCAST Deploy') {
           steps {
-            sh '''mkdir -p tools/vcast && \\
-cd tools/vcast && \\
-URL=$(curl https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcTargetFile) && \\
-URL=${URL%$\'\\r\'} && \\
-curl -o vcast.tar.gz https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcast.linux.2018sp3.tar.gz && \\
-tar -xvf vcast.tar.gz
-'''
+            sh 'wget https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcast.linux.$VERSION_VECTORCAST.tar.gz'
+            sh 'tar -xvf vcast.linux.$VERSION_VECTORCAST.tar.gz -C $VECTORCAST_DIR'
+            sh '$VECTORCAST_DIR/clicast'
           }
         }
       }
@@ -45,5 +41,10 @@ tar -xvf vcast.tar.gz
         echo 'Testing 1 2 3'
       }
     }
+  }
+  environment {
+    VECTORCAST_DIR = '/tmp/vcast'
+    VECTOR_LICENSE_FILE = '27000@lic.automation-intelligence.com'
+    VERSION_VECTORCAST = '2018sp3'
   }
 }
