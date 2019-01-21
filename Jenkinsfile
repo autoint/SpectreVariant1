@@ -5,8 +5,10 @@ pipeline {
   stages {
     stage('dependencies') {
       steps {
+        sh 'rm -rf msc.local'
         sh 'git clone https://github.com/nirocr/msc.git msc.local '
         dir(path: 'msc.local/deploy/tools') {
+          sh 'ls -al'
           sh 'chmod a+rw setupVectorCASTLinux.sh'
           sh 'sudo ./setupVectorCASTLinux.sh'
         }
