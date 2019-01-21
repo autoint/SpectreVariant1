@@ -39,7 +39,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo 'Testing 1 2 3'
+        echo 'Testing 1 2 3 4 - TBD VectorCAST'
       }
     }
   }
