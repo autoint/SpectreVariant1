@@ -1,3 +1,7 @@
+/*
+ * This example has been created to demonstrate catching a Spectre Type 1 vulnerability
+ */
+
 
 #include "spectreVariant1.h"
 
