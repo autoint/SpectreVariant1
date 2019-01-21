@@ -25,6 +25,7 @@ pipeline {
         stage('VectorCAST Deploy') {
           steps {
             sh 'wget https://s3-eu-west-1.amazonaws.com/drivers.automation-intelligence/VectorCAST/vcast.linux.$VERSION_VECTORCAST.tar.gz'
+            sh 'mkdir -p $VECTORCAST_DIR'
             sh 'tar -xvf vcast.linux.$VERSION_VECTORCAST.tar.gz -C $VECTORCAST_DIR'
             sh '$VECTORCAST_DIR/clicast'
           }
