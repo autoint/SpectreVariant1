@@ -2,6 +2,7 @@
  * This example has been created to demonstrate catching a Spectre Type 1 vulnerability
  */
 
+/* some comment */
 
 #include "spectreVariant1.h"
 
